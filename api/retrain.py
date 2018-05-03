@@ -1148,19 +1148,19 @@ def runparser():
   parser.add_argument(
     '--image_dir',
     type=str,
-    default='',
+    default='patterns/',
     help='Path to folders of labeled images.'
   )
   parser.add_argument(
     '--output_graph',
     type=str,
-    default='/tmp/output_graph.pb',
+    default='output/retrained_graph_patterns.pb',
     help='Where to save the trained graph.'
   )
   parser.add_argument(
     '--intermediate_output_graphs_dir',
     type=str,
-    default='/tmp/intermediate_graph/',
+    default='output/intermediate_graph/',
     help='Where to save the intermediate graphs.'
   )
   parser.add_argument(
@@ -1175,19 +1175,19 @@ def runparser():
   parser.add_argument(
     '--output_labels',
     type=str,
-    default='/tmp/output_labels.txt',
+    default='output/retrained_labels.txt',
     help='Where to save the trained graph\'s labels.'
   )
   parser.add_argument(
     '--summaries_dir',
     type=str,
-    default='/tmp/retrain_logs',
+    default='output/pattern_training_summaries/inception_v3',
     help='Where to save summary logs for TensorBoard.'
   )
   parser.add_argument(
     '--how_many_training_steps',
     type=int,
-    default=4000,
+    default=1000,
     help='How many training steps to run before ending.'
   )
   parser.add_argument(
@@ -1255,7 +1255,7 @@ def runparser():
   parser.add_argument(
     '--model_dir',
     type=str,
-    default='/tmp/imagenet',
+    default='api/models/',
     help="""\
           Path to classify_image_graph_def.pb,
           imagenet_synset_to_human_label_map.txt, and
@@ -1265,7 +1265,7 @@ def runparser():
   parser.add_argument(
     '--bottleneck_dir',
     type=str,
-    default='/tmp/bottleneck',
+    default='output/bottlenecks',
     help='Path to cache bottleneck layer values as files.'
   )
   parser.add_argument(
@@ -1314,7 +1314,7 @@ def runparser():
   parser.add_argument(
     '--architecture',
     type=str,
-    default='inception_v3',
+    default='mobilenet_0.50_160',
     help="""\
           Which model architecture to use. 'inception_v3' is the most accurate, but
           also the slowest. For faster or smaller models, chose a MobileNet with the

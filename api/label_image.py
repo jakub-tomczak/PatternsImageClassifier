@@ -67,17 +67,7 @@ def load_labels(label_file):
     label.append(l.rstrip())
   return label
 
-if __name__ == "__main__":
-  file_name = "tf_files/flower_photos/daisy/3475870145_685a19116d.jpg"
-  model_file = "tf_files/retrained_graph.pb"
-  label_file = "tf_files/retrained_labels.txt"
-  input_height = 160
-  input_width = 160
-  input_mean = 128
-  input_std = 128
-  input_layer = "input"
-  output_layer = "final_result"
-
+def parse_arguments():
   parser = argparse.ArgumentParser()
   parser.add_argument("--image", help="image to be processed")
   parser.add_argument("--graph", help="graph/model to be executed")
@@ -88,7 +78,18 @@ if __name__ == "__main__":
   parser.add_argument("--input_std", type=int, help="input std")
   parser.add_argument("--input_layer", help="name of input layer")
   parser.add_argument("--output_layer", help="name of output layer")
-  args = parser.parse_args()
+  return parser.parse_args()
+
+def label(args, image_to_label = 'none photo'):
+  file_name = image_to_label
+  model_file = "output/retrained_graph_patterns.pb"
+  label_file = "output/retrained_labels.txt"
+  input_height = 160
+  input_width = 160
+  input_mean = 128
+  input_std = 128
+  input_layer = "input"
+  output_layer = "final_result"
 
   if args.graph:
     model_file = args.graph
@@ -124,14 +125,17 @@ if __name__ == "__main__":
   with tf.Session(graph=graph) as sess:
     start = time.time()
     results = sess.run(output_operation.outputs[0],
-                      {input_operation.outputs[0]: t})
-    end=time.time()
+                       {input_operation.outputs[0]: t})
+    end = time.time()
   results = np.squeeze(results)
 
   top_k = results.argsort()[-5:][::-1]
   labels = load_labels(label_file)
 
-  print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
+  print('\nEvaluation time (1-image): {:.3f}s\n'.format(end - start))
 
   for i in top_k:
     print(labels[i], results[i])
+
+if __name__ == "__main__":
+  label(parse_arguments())
