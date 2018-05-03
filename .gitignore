@@ -1,0 +1,6 @@
+output/*
+patterns/*
+.idea/*
+
+#exclude original png photos
+resources/decor/*.png
