@@ -1,6 +1,12 @@
 output/*
 patterns/*
 .idea/*
+resources/DecorColorImages.h5
+*__pycache__*
 
 #exclude original png photos
 resources/decor/*.png
+
+#exclude models dir - make script download then
+api/models/
+
