@@ -80,7 +80,7 @@ def parse_arguments():
   parser.add_argument("--output_layer", help="name of output layer")
   return parser.parse_args()
 
-def label(args, image_to_label = 'none photo'):
+def try_label(args, image_to_label ='none photo', display_all_results = True):
   file_name = image_to_label
   model_file = "output/retrained_graph_patterns.pb"
   label_file = "output/retrained_labels.txt"
@@ -134,8 +134,10 @@ def label(args, image_to_label = 'none photo'):
 
   print('\nEvaluation time (1-image): {:.3f}s\n'.format(end - start))
 
-  for i in top_k:
-    print(labels[i], results[i])
+  if display_all_results:
+    for i in top_k:
+      print(labels[i], results[i])
+  return (labels[top_k[0]], results[top_k[0]])
 
 if __name__ == "__main__":
-  label(parse_arguments())
+  try_label(parse_arguments())
