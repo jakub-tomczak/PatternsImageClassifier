@@ -84,11 +84,11 @@ def try_label(args, image_to_label ='none photo', display_all_results = True):
   file_name = image_to_label
   model_file = "output/retrained_graph_patterns.pb"
   label_file = "output/retrained_labels.txt"
-  input_height = 160
-  input_width = 160
+  input_height = 299
+  input_width = 299
   input_mean = 128
   input_std = 128
-  input_layer = "input"
+  input_layer = "Mul"
   output_layer = "final_result"
 
   if args.graph:

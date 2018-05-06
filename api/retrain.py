@@ -123,7 +123,7 @@ FLAGS = None
 MAX_NUM_IMAGES_PER_CLASS = 2 ** 27 - 1  # ~134M
 
 
-def create_image_lists(image_dir, testing_percentage, validation_percentage):
+def create_image_lists(image_dir, testing_percentage, validation_percentage, images_properties = None):
   """Builds a list of training images from the file system.
 
   Analyzes the sub folders in the image directory, splits them into stable
@@ -1314,7 +1314,7 @@ def runparser():
   parser.add_argument(
     '--architecture',
     type=str,
-    default='mobilenet_0.50_160',
+    default='inception_v3',#
     help="""\
           Which model architecture to use. 'inception_v3' is the most accurate, but
           also the slowest. For faster or smaller models, chose a MobileNet with the
