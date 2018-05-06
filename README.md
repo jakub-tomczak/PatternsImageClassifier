@@ -25,9 +25,19 @@ This command (if completed successfully) creates new directory `output` where st
 
 `Clear all` command deletes all the data created by the `Training` command. So, it just deletes `patterns` and `output` dirs.
 
+## Achived accuracies
+| Model | Type | Training | Test|
+|-------|------|----------|-----------|
+|inception_v3| Countries | 99%| 88.5%|
+| | Decor| 100% | 87.8% |
+| | Type | 99% | 95.3% |
+|mobilenet_0.50_160 | Countries | 100%|  88.5%|
+| | Decor| 100% | 78.0% |
+| | Type | 100% | 93% |
+
 ## TO DO
 - [ ] Create runner scripts for Win/Linux/MAC OS.
 - [ ] Allow png images as an input.
 - [ ] Use csv description to create categories instead of creating special filesystem hierarchy.
 ## Original project
-My repo was based on google code labs tutorial at [TensorFlow For Poets](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#0).
+My repo was built based on Google Code Labs tutorial at [TensorFlow For Poets](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#0).
