@@ -25,6 +25,21 @@ This command (if completed successfully) creates new directory `output` where st
 
 `Clear all` command deletes all the data created by the `Training` command. So, it just deletes `patterns` and `output` dirs.
 
+## Dockerfile
+Dockerfile builds an image with the source code. It uses tensorflow with CPU support, without GPU. To build an image use command:
+```
+docker build -t python:patterns-recognition .
+```
+To run use command
+```
+docker run python:patterns-recognition
+```
+or with bash support
+```
+docker run -it python:patterns-recognition /bin/bash
+```
+then you should be in `/patterns_recognition` directory that contains the current master branch of this project.
+
 ## Achived accuracies
 | Model | Type | Training | Test|
 |-------|------|----------|-----------|
