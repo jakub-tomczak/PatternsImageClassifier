@@ -32,7 +32,7 @@ docker build -t python:patterns-recognition .
 ```
 To run use command
 ```
-docker run python:patterns-recognition
+docker run -it python:patterns-recognition
 ```
 or with bash support
 ```
