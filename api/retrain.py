@@ -1314,7 +1314,7 @@ def runparser():
   parser.add_argument(
     '--architecture',
     type=str,
-    default='inception_v3',#
+    default='mobilenet_0.50_160',#
     help="""\
           Which model architecture to use. 'inception_v3' is the most accurate, but
           also the slowest. For faster or smaller models, chose a MobileNet with the
